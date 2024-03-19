@@ -7,12 +7,37 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>450</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Widget</string>
   </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>450</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget#widget{
+border-image:url(:/images/background.jpeg);
+color:rgb(255,255,255);
+}
+QLabel{
+font:25 10pt &quot;Microsoft YaHei&quot;;
+border-radius:4px;
+background-color:argb(80,60,60,130);
+color:rgb(255,255,255);
+}
+Line{
+background-color:rgb(0,85,0);
+}</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
