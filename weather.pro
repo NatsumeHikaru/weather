@@ -32,3 +32,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resource.qrc
+
+LIBS += -lUser32
+LIBS += -lkernel32

@@ -20,8 +20,8 @@ Widget::Widget(QWidget *parent)
 
     // 钩子监听键盘
     hook.install_hook();
-    connect(&hook,SIGNAL(send_key_type(Type)),this,SLOT(slot_check_hook_type(Hook::Type)));
-
+    qRegisterMetaType<Hook::Type>("Type"); // 为了信号能传递自定义类型
+    connect(&hook,SIGNAL(send_key_type(Type)),this,SLOT(slot_check_hook_type(Type)));
 }
 
 Widget::~Widget()

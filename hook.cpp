@@ -7,7 +7,7 @@ static Hook* hook;
 LRESULT CALLBACK key_proc(int code,WPARAM wParam,LPARAM lParam){
     KBDLLHOOKSTRUCT* pkbhs = (KBDLLHOOKSTRUCT*)lParam; // 判断按键类型
     if(wParam == WM_KEYDOWN){
-        if(pkbhs->vkCode == 0xB1&&GetAsyncKeyState(VK_CONTROL)){ // 0xB1是VK_CODE 对应ESC键
+        if(pkbhs->vkCode == 0x1B){ // 0x1B是VK_CODE 对应ESC键
             hook->send_signal(Hook::EXIT);
         }
     }
@@ -15,6 +15,8 @@ LRESULT CALLBACK key_proc(int code,WPARAM wParam,LPARAM lParam){
 }
 
 Hook::Hook(){}
+
+Hook::~Hook(){}
 
 void Hook::install_hook(){
     key_hook = SetWindowsHookEx(WH_KEYBOARD_LL,key_proc,nullptr,0);

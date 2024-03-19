@@ -7,6 +7,8 @@
 #include <QMenu>
 #include <QAction>
 #include <QMouseEvent>
+#include <windows.h>
+
 
 #include "hook.h"
 
@@ -23,6 +25,7 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+
 
 protected:
     void  contextMenuEvent(QContextMenuEvent* event);
