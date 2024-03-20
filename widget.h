@@ -28,13 +28,16 @@ public:
 
 
 protected:
-    void  contextMenuEvent(QContextMenuEvent* event);
+    void contextMenuEvent(QContextMenuEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
+    void mousePressEvent(QMouseEvent* event);
 
 private:
     Ui::Widget *ui;
     QMenu* exit_menu; // 右键退出菜单
     QAction *exit_action;
     Hook hook; // 钩子对象
+    QPoint position;
 
 private slots:
     void slot_exit_app();

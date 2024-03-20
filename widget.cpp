@@ -48,3 +48,11 @@ void Widget::slot_check_hook_type(Hook::Type type){
         break;
     }
 }
+
+void Widget::mouseMoveEvent(QMouseEvent* event){
+    move(event->globalPos() - position);
+}
+
+void Widget::mousePressEvent(QMouseEvent* event){
+    position = event->globalPos() - this->pos(); // 计算坐标差值
+}
