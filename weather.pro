@@ -11,10 +11,13 @@ CONFIG += c++17
 SOURCES += \
     hook.cpp \
     main.cpp \
+    weatherdate.cpp \
     widget.cpp
 
 HEADERS += \
     hook.h \
+    weatherTool.h \
+    weatherdate.h \
     widget.h
 
 FORMS += \

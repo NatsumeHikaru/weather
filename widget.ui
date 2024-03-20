@@ -119,9 +119,9 @@ background-color:rgb(255,255,255,0)</string>
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>10</y>
+      <y>6</y>
       <width>171</width>
-      <height>31</height>
+      <height>38</height>
      </rect>
     </property>
     <property name="font">
@@ -138,7 +138,7 @@ color:rgb(255, 97, 26);
 background-color:rbga(255,255,255,0);</string>
     </property>
     <property name="text">
-     <string>天气预报</string>
+     <string>天氣預報</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -149,7 +149,7 @@ background-color:rbga(255,255,255,0);</string>
      <rect>
       <x>10</x>
       <y>180</y>
-      <width>331</width>
+      <width>301</width>
       <height>151</height>
      </rect>
     </property>
@@ -214,21 +214,6 @@ background-color:rbg(255,255,255);</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1" colspan="2">
-      <widget class="QLabel" name="wet_label">
-       <property name="styleSheet">
-        <string notr="true">font: 14pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
-       </property>
-       <property name="text">
-        <string>95</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="1" colspan="2">
       <widget class="QLabel" name="direction_label">
        <property name="styleSheet">
@@ -268,6 +253,21 @@ background-color:rbg(255,255,255);</string>
        </property>
        <property name="text">
         <string>50</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="2">
+      <widget class="QLabel" name="wet_label">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;京華老宋体&quot;;
+color:rgb(0, 0, 0);
+background-color:rbg(255,255,255);</string>
+       </property>
+       <property name="text">
+        <string>95</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>

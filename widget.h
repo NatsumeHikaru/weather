@@ -9,7 +9,6 @@
 #include <QMouseEvent>
 #include <windows.h>
 
-
 #include "hook.h"
 
 QT_BEGIN_NAMESPACE
