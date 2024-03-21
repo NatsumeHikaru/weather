@@ -49,6 +49,7 @@ protected:
     void mousePressEvent(QMouseEvent* event);
     void get_weather_info(QNetworkAccessManager* manager);
     void parse_json(QByteArray& bytes);
+    void set_label_content();
 
 private:
     Ui::Widget *ui;

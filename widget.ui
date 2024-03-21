@@ -291,7 +291,7 @@ color: rgb(0, 0, 0);
    <widget class="QWidget" name="gridLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>100</x>
       <y>50</y>
       <width>178</width>
       <height>41</height>
@@ -315,7 +315,7 @@ image:url(:/icons/location.ico)</string>
      <item row="0" column="1">
       <widget class="QLabel" name="city_label">
        <property name="styleSheet">
-        <string notr="true">font: 16pt &quot;京華老宋体&quot;;
+        <string notr="true">font: 20pt &quot;京華老宋体&quot;;
 color:rgb(0, 0, 0);
 background-color:rgba(255,255,255,0);</string>
        </property>
@@ -371,9 +371,6 @@ color: rgb(0, 0, 0);
      </item>
      <item row="4" column="5" rowspan="2">
       <widget class="QLabel" name="icon5">
-       <property name="styleSheet">
-        <string notr="true">image:url(:weatherIcons/day/晴.png)</string>
-       </property>
        <property name="text">
         <string/>
        </property>
@@ -614,9 +611,6 @@ color: rgb(0, 0, 0);
      </item>
      <item row="4" column="3" rowspan="2">
       <widget class="QLabel" name="icon3">
-       <property name="styleSheet">
-        <string notr="true">image:url(:weatherIcons/day/晴.png)</string>
-       </property>
        <property name="text">
         <string/>
        </property>
@@ -659,9 +653,6 @@ color: rgb(0, 0, 0);
      </item>
      <item row="4" column="4" rowspan="2">
       <widget class="QLabel" name="icon4">
-       <property name="styleSheet">
-        <string notr="true">image:url(:weatherIcons/day/晴.png)</string>
-       </property>
        <property name="text">
         <string/>
        </property>
@@ -705,7 +696,7 @@ color: rgb(0, 0, 0);
      <item row="4" column="0" rowspan="2">
       <widget class="QLabel" name="icon0">
        <property name="styleSheet">
-        <string notr="true">image:url(:weatherIcons/day/小雨.png)</string>
+        <string notr="true">image:url(:/weatherIcons/day/雪.png);</string>
        </property>
        <property name="text">
         <string/>
@@ -731,9 +722,6 @@ background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
      </item>
      <item row="4" column="1" rowspan="2">
       <widget class="QLabel" name="icon1">
-       <property name="styleSheet">
-        <string notr="true">image:url(:weatherIcons/day/晴.png)</string>
-       </property>
        <property name="text">
         <string/>
        </property>
@@ -758,9 +746,6 @@ background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
      </item>
      <item row="4" column="2" rowspan="2">
       <widget class="QLabel" name="icon2">
-       <property name="styleSheet">
-        <string notr="true">image:url(:weatherIcons/day/雷阵雨.png)</string>
-       </property>
        <property name="text">
         <string/>
        </property>
@@ -991,7 +976,7 @@ color: rgb(0, 0, 0);
     <property name="geometry">
      <rect>
       <x>18</x>
-      <y>58</y>
+      <y>55</y>
       <width>26</width>
       <height>26</height>
      </rect>
@@ -1007,8 +992,8 @@ background-color:argb(255,255,255,0);</string>
    <widget class="QLabel" name="quality">
     <property name="geometry">
      <rect>
-      <x>38</x>
-      <y>60</y>
+      <x>42</x>
+      <y>55</y>
       <width>56</width>
       <height>26</height>
      </rect>
@@ -1028,8 +1013,8 @@ background-color:arbg(255,255,255,0);</string>
    <widget class="QLabel" name="temperature">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>50</y>
+      <x>20</x>
+      <y>70</y>
       <width>241</width>
       <height>101</height>
      </rect>
@@ -1040,13 +1025,13 @@ color:rgb(0, 0, 0);
 background-color:rgba(255,255,255,0);</string>
     </property>
     <property name="text">
-     <string>9°</string>
+     <string>28°</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="typeLabel">
     <property name="geometry">
      <rect>
       <x>140</x>

@@ -8,8 +8,8 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
 
     // 设置字符编码
-    QTextCodec* codec = QTextCodec::codecForName("GBK");
-    QTextCodec::setCodecForLocale(codec);
+    // QTextCodec* codec = QTextCodec::codecForName("GBK");
+    // QTextCodec::setCodecForLocale(codec);
 
     // int font_id = QFontDatabase::addApplicationFont(":/fonts/宋.ttf");
     // QStringList font_list = QFontDatabase::applicationFontFamilies(font_id);
@@ -98,7 +98,7 @@ void Widget::slot_reply_finished(QNetworkReply* reply){
     }
 
     QByteArray bytes = reply->readAll();
-    qDebug()<<bytes;
+
     parse_json(bytes);
 }
 
@@ -153,6 +153,7 @@ void Widget::parse_json(QByteArray& bytes){
     QJsonArray forecast_arr = data_obj.value("forecast").toArray();
     for(int i=1,j=0;i<6;++i,++j){
         QJsonObject t = forecast_arr.at(j).toObject();
+        forecast[i].week = t.value("week").toString();
         forecast[i].date = t.value("date").toString();
         forecast[i].high = t.value("high").toString();
         forecast[i].low = t.value("low").toString();
@@ -168,6 +169,55 @@ void Widget::parse_json(QByteArray& bytes){
     today.sunrise = today_obj.value("sunrise").toString();
     today.sunset = today_obj.value("sunset").toString();
 
-    qDebug()<<today.sunset;
-    //set_label_content();
+    set_label_content();
+}
+
+// 更新UI数据
+void Widget::set_label_content(){
+    // 今日数据
+    ui->dateLabel->setText(today.date);
+    ui->temperature->setText(today.temperature);
+    ui->city_label->setText(today.city);
+    ui->typeLabel->setText(today.type);
+    ui->wet_label->setText(today.wet);
+    ui->PM_label->setText(today.pm25);
+    ui->direction_label->setText(today.wind_direction);
+    ui->power_label->setText(today.wind_power);
+    ui->browser->setText(today.cold_index);
+
+    for(int i=0;i<6;++i){
+        forecast_week_list[i]->setText(forecast[i].week);
+        forecast_date_list[i]->setText(forecast[i].date.left(3));
+        forecast_type_list[i]->setText(forecast[i].type);
+        forecast_high_list[i]->setText(forecast[i].high.split(" ").at(1));
+        forecast_low_list[i]->setText(forecast[i].low.split(" ").at(1));
+        forecast_type_icon_list[i]->setStyleSheet(tr("image:url(:weatherIcons/day/%1.png);").arg(forecast[i].type));
+
+        if(forecast[i].quality.toInt() >= 0 && forecast[i].quality.toInt() <= 50){
+            forecast_quality_list[i]->setText(u8"优");
+            ui->quality->setText(u8"优");
+        }
+        else if(forecast[i].quality.toInt() > 50 && forecast[i].quality.toInt() <= 100){
+            forecast_quality_list[i]->setText(u8"良好");
+            ui->quality->setText(u8"良好");
+        }
+        else if(forecast[i].quality.toInt() >=100 && forecast[i].quality.toInt() <= 150){
+            forecast_quality_list[i]->setText(u8"轻度污染");
+            ui->quality->setText(u8"污染");
+        }
+        else if(forecast[i].quality.toInt() > 150 && forecast[i].quality.toInt() <= 200){
+            forecast_quality_list[i]->setText(u8"重度污染");\
+            ui->quality->setText(u8"污染");
+        }
+        else {
+            forecast_quality_list[i]->setText(u8"严重污染");
+            ui->quality->setText(u8"污染");
+        }
+    }
+
+    ui->day0_label->setText(u8"昨天");
+    ui->day1_label->setText(u8"今天");
+    ui->day2_label->setText(u8"明天");
+
+    ui->curve_label->update();
 }
