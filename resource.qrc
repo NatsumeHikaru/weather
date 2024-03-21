@@ -54,6 +54,6 @@
         <file>weatherIcons/night/夜间雪.png</file>
         <file>weatherIcons/night/夜间中雨.png</file>
         <file>weatherIcons/night/中雨.png</file>
-        <file>fonts/宋.ttf</file>
+        <file>citycode.json</file>
     </qresource>
 </RCC>

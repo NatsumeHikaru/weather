@@ -11,9 +11,9 @@ Widget::Widget(QWidget *parent)
     QTextCodec* codec = QTextCodec::codecForName("GBK");
     QTextCodec::setCodecForLocale(codec);
 
-    int font_id = QFontDatabase::addApplicationFont(":/fonts/宋.ttf");
-    QStringList font_list = QFontDatabase::applicationFontFamilies(font_id);
-    qDebug()<<font_list;
+    // int font_id = QFontDatabase::addApplicationFont(":/fonts/宋.ttf");
+    // QStringList font_list = QFontDatabase::applicationFontFamilies(font_id);
+    // qDebug()<<font_list;
 
     // 设置窗口属性 无边框窗口
     setWindowFlag(Qt::FramelessWindowHint);
@@ -49,12 +49,11 @@ Widget::Widget(QWidget *parent)
                       << ui->low3 << ui->low4 << ui->low5;
 
     url = "http://t.weather.itboy.net/api/weather/city/";
-    city = u8"长沙";
+    city = u8"北京";
     city_tmp = city;
     manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(slot_reply_finished(QNetworkReply*)));
-
-
+    get_weather_info(manager);
 
 }
 
@@ -99,7 +98,8 @@ void Widget::slot_reply_finished(QNetworkReply* reply){
     }
 
     QByteArray bytes = reply->readAll();
-    //parseJson(bytes);
+    qDebug()<<bytes;
+    parse_json(bytes);
 }
 
 void Widget::get_weather_info(QNetworkAccessManager* manager){
@@ -111,4 +111,63 @@ void Widget::get_weather_info(QNetworkAccessManager* manager){
 
     QUrl json_url = url + citycode;
     manager->get(QNetworkRequest(json_url));
+}
+
+// 解析Json数据
+void Widget::parse_json(QByteArray& bytes){
+    QJsonParseError err;
+    QJsonDocument json_doc = QJsonDocument::fromJson(bytes,&err); // 检测json格式
+    if(err.error != QJsonParseError::NoError){
+        return;
+    }
+
+    QJsonObject json_obj = json_doc.object();
+    QString message = json_obj.value("message").toString();
+    if(message.contains("success") == false){
+        QMessageBox::warning(this,tr("The information of Json_desc"), u8"天气:城市错误", QMessageBox::Ok);
+        city = city_tmp;
+        return;
+    }
+    today = json_obj;
+
+    QString date_str = json_obj.value("data").toString();
+    today.date = QDate::fromString(date_str,"yyyyMMdd").toString("yyyy-MM-dd");
+    today.city = json_obj.value("cityInfo").toObject().value("city").toString();
+
+    // 解析data
+    QJsonObject data_obj = json_obj.value("data").toObject();
+    today.wet = data_obj.value("shidu").toString();
+    today.pm25 = QString::number(data_obj.value("pm25").toDouble());
+    today.quality = data_obj.value("quality").toString();
+    today.temperature = data_obj.value("wendu").toString() + u8"°";
+
+    // 解析yesterday
+    QJsonObject y_obj = data_obj.value("yesterday").toObject();
+    forecast[0].date = y_obj.value("date").toString();
+    forecast[0].high = y_obj.value("high").toString();
+    forecast[0].low = y_obj.value("low").toString();
+    forecast[0].quality = QString::number(y_obj.value("aqi").toDouble());
+    forecast[0].type = y_obj.value("type").toString();
+
+    // 解析forecast
+    QJsonArray forecast_arr = data_obj.value("forecast").toArray();
+    for(int i=1,j=0;i<6;++i,++j){
+        QJsonObject t = forecast_arr.at(j).toObject();
+        forecast[i].date = t.value("date").toString();
+        forecast[i].high = t.value("high").toString();
+        forecast[i].low = t.value("low").toString();
+        forecast[i].quality = QString::number(t.value("aqi").toDouble());
+        forecast[i].type = t.value("type").toString();
+    }
+
+    // 取得今日数据
+    QJsonObject today_obj = forecast_arr.at(0).toObject();
+    today.wind_direction = today_obj.value("fx").toString();
+    today.wind_power = today_obj.value("fl").toString();
+    today.type = today_obj.value("type").toString();
+    today.sunrise = today_obj.value("sunrise").toString();
+    today.sunset = today_obj.value("sunset").toString();
+
+    qDebug()<<today.sunset;
+    //set_label_content();
 }

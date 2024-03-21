@@ -15,7 +15,7 @@ class WeatherTool{
 public:
     WeatherTool(){
         QString filename = QCoreApplication::applicationDirPath();
-        filename += "citycode.json";
+        filename += "/citycode.json";
         QFile file(filename);
         file.open(QIODevice::ReadOnly|QIODevice::Text);
         QByteArray json = file.readAll();

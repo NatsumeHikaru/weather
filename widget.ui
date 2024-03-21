@@ -47,7 +47,7 @@ background-color:rgb(0,85,0);
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLineEdit{border: 1px solid gray; border-radius: 4px; background:argb(47,47,47,130);corlor:rgb(255,255,255);}
+     <string notr="true">QLineEdit{border: 1px solid gray; border-radius: 6px; background:rgba(47,47,47,90);corlor:rgb(255,255,255);}
 QLineEdit:hover{border-color:rgb(101,255,106);}</string>
     </property>
    </widget>
@@ -71,7 +71,7 @@ QLineEdit:hover{border-color:rgb(101,255,106);}</string>
     <property name="styleSheet">
      <string notr="true">font: 18pt  &quot;851CHIKARA-DZUYOKU-KANA-A&quot;;
 color:rgb(0,0,0);
-background-color:rgb(255,255,255,0)</string>
+background-color:rgba(255,255,255,0)</string>
     </property>
     <property name="text">
      <string>2024-03-19</string>
@@ -139,7 +139,7 @@ background-color:rgb(255,255,255,0)</string>
     <property name="styleSheet">
      <string notr="true">font: 30pt &quot;QIJIC&quot;;
 color:rgb(255, 97, 26);
-background-color:rbga(255,255,255,0);</string>
+background-color:rgba(255,255,255,0);</string>
     </property>
     <property name="text">
      <string>天氣預報</string>
@@ -317,7 +317,7 @@ image:url(:/icons/location.ico)</string>
        <property name="styleSheet">
         <string notr="true">font: 16pt &quot;京華老宋体&quot;;
 color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(255,255,255,0);</string>
        </property>
        <property name="text">
         <string>北京</string>
@@ -998,7 +998,7 @@ color: rgb(0, 0, 0);
     </property>
     <property name="styleSheet">
      <string notr="true">image:url(:icons/leaf.ico);
-background-color:arbg(255,255,255,0);</string>
+background-color:argb(255,255,255,0);</string>
     </property>
     <property name="text">
      <string>TextLabel</string>
@@ -1037,7 +1037,7 @@ background-color:arbg(255,255,255,0);</string>
     <property name="styleSheet">
      <string notr="true">font: 42pt &quot;京華老宋体&quot;;
 color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(255,255,255,0);</string>
     </property>
     <property name="text">
      <string>9°</string>
@@ -1058,7 +1058,7 @@ background-color:rbg(255,255,255);</string>
     <property name="styleSheet">
      <string notr="true">font: 18pt &quot;京華老宋体&quot;;
 color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(255,255,255,0);</string>
     </property>
     <property name="text">
      <string>晴</string>

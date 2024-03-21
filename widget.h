@@ -22,9 +22,11 @@
 #include <QMessageBox>
 #include <QByteArray>
 #include <QUrl>
+#include <QJsonParseError>
 
 #include "hook.h"
 #include "weatherTool.h"
+#include "weatherdate.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -46,6 +48,7 @@ protected:
     void mouseMoveEvent(QMouseEvent* event);
     void mousePressEvent(QMouseEvent* event);
     void get_weather_info(QNetworkAccessManager* manager);
+    void parse_json(QByteArray& bytes);
 
 private:
     Ui::Widget *ui;
@@ -62,6 +65,9 @@ private:
     QString city, city_tmp; // 城市
     WeatherTool tool;
     QNetworkAccessManager* manager;
+
+    Today today;
+    Forecast forecast[7];
 
 private slots:
     void slot_exit_app();
