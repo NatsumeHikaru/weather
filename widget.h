@@ -16,8 +16,15 @@
 #include <QPalette>
 #include <QStringLiteral>
 #include <QFont>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
+#include <QMessageBox>
+#include <QByteArray>
+#include <QUrl>
 
 #include "hook.h"
+#include "weatherTool.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -38,6 +45,7 @@ protected:
     void contextMenuEvent(QContextMenuEvent* event);
     void mouseMoveEvent(QMouseEvent* event);
     void mousePressEvent(QMouseEvent* event);
+    void get_weather_info(QNetworkAccessManager* manager);
 
 private:
     Ui::Widget *ui;
@@ -50,8 +58,14 @@ private:
     QList<QLabel *> forecast_week_list, forecast_date_list, forecast_quality_list, \
                     forecast_type_list, forecast_type_icon_list, forecast_high_list, forecast_low_list;
 
+    QString url; // 接口链接
+    QString city, city_tmp; // 城市
+    WeatherTool tool;
+    QNetworkAccessManager* manager;
+
 private slots:
     void slot_exit_app();
     void slot_check_hook_type(Hook::Type);
+    void slot_reply_finished(QNetworkReply* reply);
 };
 #endif // WIDGET_H

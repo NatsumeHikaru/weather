@@ -48,6 +48,12 @@ Widget::Widget(QWidget *parent)
     forecast_low_list << ui->low0 << ui->low1 << ui->low2 \
                       << ui->low3 << ui->low4 << ui->low5;
 
+    url = "http://t.weather.itboy.net/api/weather/city/";
+    city = u8"长沙";
+    city_tmp = city;
+    manager = new QNetworkAccessManager(this);
+    connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(slot_reply_finished(QNetworkReply*)));
+
 
 
 }
@@ -83,4 +89,26 @@ void Widget::mouseMoveEvent(QMouseEvent* event){
 
 void Widget::mousePressEvent(QMouseEvent* event){
     position = event->globalPos() - this->pos(); // 计算坐标差值
+}
+
+void Widget::slot_reply_finished(QNetworkReply* reply){
+    QVariant status_code = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+    if(reply->error() != QNetworkReply::NoError || status_code != 200){
+        QMessageBox::warning(this, "ERROR!", u8"天气：请求数据错误",QMessageBox::Ok);
+        return;
+    }
+
+    QByteArray bytes = reply->readAll();
+    //parseJson(bytes);
+}
+
+void Widget::get_weather_info(QNetworkAccessManager* manager){
+    QString citycode = tool[city];
+    if(citycode == "000000000"){
+        QMessageBox::warning(this, "ERROR!", u8"天气:指定的城市不存在",QMessageBox::Ok);
+        return;
+    }
+
+    QUrl json_url = url + citycode;
+    manager->get(QNetworkRequest(json_url));
 }
