@@ -38,3 +38,8 @@ RESOURCES += \
 
 LIBS += -lUser32
 LIBS += -lkernel32
+
+DISTFILES += \
+    fonts/851CHIKARA-DZUYOKU_kanaA.ttf \
+    fonts/song.ttf \
+    fonts/кн.ttf

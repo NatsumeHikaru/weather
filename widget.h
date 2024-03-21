@@ -1,13 +1,21 @@
-﻿#ifndef WIDGET_H
-#define WIDGET_H
+﻿#pragma once
 
-#pragma once
+#ifndef WIDGET_H
+#define WIDGET_H
 
 #include <QWidget>
 #include <QMenu>
 #include <QAction>
 #include <QMouseEvent>
 #include <windows.h>
+#include <QList>
+#include <QLabel>
+#include <QTextCodec>
+#include <QFontDatabase>
+#include <QStringList>
+#include <QPalette>
+#include <QStringLiteral>
+#include <QFont>
 
 #include "hook.h"
 
@@ -37,6 +45,10 @@ private:
     QAction *exit_action;
     Hook hook; // 钩子对象
     QPoint position;
+
+    // UI
+    QList<QLabel *> forecast_week_list, forecast_date_list, forecast_quality_list, \
+                    forecast_type_list, forecast_type_icon_list, forecast_high_list, forecast_low_list;
 
 private slots:
     void slot_exit_app();

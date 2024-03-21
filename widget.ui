@@ -46,6 +46,10 @@ background-color:rgb(0,85,0);
       <height>28</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{border: 1px solid gray; border-radius: 4px; background:argb(47,47,47,130);corlor:rgb(255,255,255);}
+QLineEdit:hover{border-color:rgb(101,255,106);}</string>
+    </property>
    </widget>
    <widget class="QLabel" name="dateLabel">
     <property name="geometry">
@@ -65,7 +69,7 @@ background-color:rgb(0,85,0);
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 18pt &quot;851CHIKARA-DZUYOKU-KANA-A&quot;;
+     <string notr="true">font: 18pt  &quot;851CHIKARA-DZUYOKU-KANA-A&quot;;
 color:rgb(0,0,0);
 background-color:rgb(255,255,255,0)</string>
     </property>
@@ -158,8 +162,9 @@ background-color:rbga(255,255,255,0);</string>
       <widget class="QLabel" name="wetTitle_label">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>湿度</string>
@@ -173,8 +178,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="directionTitle_label">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>风向</string>
@@ -188,8 +194,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="powerTitle_label">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>风力</string>
@@ -203,8 +210,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="PMTitle_label">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>PM2.5</string>
@@ -218,8 +226,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="direction_label">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>西北风</string>
@@ -233,8 +242,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="power_label">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>&lt;3级</string>
@@ -248,8 +258,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="PM_label">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>50</string>
@@ -263,8 +274,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="wet_label">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>95</string>
@@ -330,9 +342,8 @@ background-color:rbg(255,255,255);</string>
      <item row="0" column="2">
       <widget class="QLabel" name="day2_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
        </property>
        <property name="text">
         <string>明天</string>
@@ -345,9 +356,10 @@ background-color:rbg(255,255,255);</string>
      <item row="10" column="4">
       <widget class="QLabel" name="low4">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>-1°</string>
@@ -373,9 +385,10 @@ background-color:rbg(255,255,255);</string>
      <item row="10" column="0">
       <widget class="QLabel" name="low0">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>-1°</string>
@@ -388,9 +401,8 @@ background-color:rbg(255,255,255);</string>
      <item row="0" column="1">
       <widget class="QLabel" name="day1_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
        </property>
        <property name="text">
         <string>今天</string>
@@ -404,8 +416,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="quality2_label">
        <property name="styleSheet">
         <string notr="true">font: 11pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>轻度污染</string>
@@ -418,9 +431,8 @@ background-color:rbg(255,255,255);</string>
      <item row="1" column="1">
       <widget class="QLabel" name="date1_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
        </property>
        <property name="text">
         <string>01/02</string>
@@ -433,9 +445,10 @@ background-color:rbg(255,255,255);</string>
      <item row="6" column="5">
       <widget class="QLabel" name="high5">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>15°</string>
@@ -449,8 +462,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="quality3_label">
        <property name="styleSheet">
         <string notr="true">font: 11pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>中度污染</string>
@@ -463,9 +477,10 @@ background-color:rbg(255,255,255);</string>
      <item row="10" column="5">
       <widget class="QLabel" name="low5">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>-1°</string>
@@ -478,9 +493,10 @@ background-color:rbg(255,255,255);</string>
      <item row="6" column="2">
       <widget class="QLabel" name="high2">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>15°</string>
@@ -493,9 +509,8 @@ background-color:rbg(255,255,255);</string>
      <item row="0" column="0">
       <widget class="QLabel" name="day0_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
        </property>
        <property name="text">
         <string>昨天</string>
@@ -508,9 +523,10 @@ background-color:rbg(255,255,255);</string>
      <item row="10" column="1">
       <widget class="QLabel" name="low1">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>-1°</string>
@@ -523,9 +539,10 @@ background-color:rbg(255,255,255);</string>
      <item row="6" column="3">
       <widget class="QLabel" name="high3">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>15°</string>
@@ -538,9 +555,8 @@ background-color:rbg(255,255,255);</string>
      <item row="0" column="4">
       <widget class="QLabel" name="day4_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
        </property>
        <property name="text">
         <string>周五</string>
@@ -553,9 +569,10 @@ background-color:rbg(255,255,255);</string>
      <item row="7" column="0" rowspan="3" colspan="6">
       <widget class="QLabel" name="curve_label">
        <property name="styleSheet">
-        <string notr="true">font: 8pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 14pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string/>
@@ -568,9 +585,8 @@ background-color:rbg(255,255,255);</string>
      <item row="1" column="2">
       <widget class="QLabel" name="date2_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
        </property>
        <property name="text">
         <string>01/03</string>
@@ -584,8 +600,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="quality5_label">
        <property name="styleSheet">
         <string notr="true">font: 11pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>良好</string>
@@ -612,8 +629,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="quality0_label">
        <property name="styleSheet">
         <string notr="true">font: 11pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>优质</string>
@@ -626,9 +644,10 @@ background-color:rbg(255,255,255);</string>
      <item row="10" column="2">
       <widget class="QLabel" name="low2">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>-1°</string>
@@ -654,9 +673,10 @@ background-color:rbg(255,255,255);</string>
      <item row="6" column="1">
       <widget class="QLabel" name="high1">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>15°</string>
@@ -670,8 +690,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="quality1_label">
        <property name="styleSheet">
         <string notr="true">font: 11pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>良好</string>
@@ -697,9 +718,8 @@ background-color:rbg(255,255,255);</string>
      <item row="0" column="3">
       <widget class="QLabel" name="day3_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
        </property>
        <property name="text">
         <string>周四</string>
@@ -725,9 +745,8 @@ background-color:rbg(255,255,255);</string>
      <item row="1" column="4">
       <widget class="QLabel" name="date4_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
        </property>
        <property name="text">
         <string>01/05</string>
@@ -753,9 +772,8 @@ background-color:rbg(255,255,255);</string>
      <item row="1" column="3">
       <widget class="QLabel" name="date3_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
        </property>
        <property name="text">
         <string>01/04</string>
@@ -768,9 +786,8 @@ background-color:rbg(255,255,255);</string>
      <item row="0" column="5">
       <widget class="QLabel" name="day5_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
        </property>
        <property name="text">
         <string>周六</string>
@@ -783,9 +800,10 @@ background-color:rbg(255,255,255);</string>
      <item row="10" column="3">
       <widget class="QLabel" name="low3">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>-1°</string>
@@ -798,9 +816,8 @@ background-color:rbg(255,255,255);</string>
      <item row="1" column="5">
       <widget class="QLabel" name="date5_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
        </property>
        <property name="text">
         <string>01/06</string>
@@ -813,9 +830,8 @@ background-color:rbg(255,255,255);</string>
      <item row="1" column="0">
       <widget class="QLabel" name="date0_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(0,255,255,175); color:rgb(0,0,0);</string>
        </property>
        <property name="text">
         <string>01/01</string>
@@ -828,9 +844,10 @@ background-color:rbg(255,255,255);</string>
      <item row="6" column="4">
       <widget class="QLabel" name="high4">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>15°</string>
@@ -843,9 +860,10 @@ background-color:rbg(255,255,255);</string>
      <item row="6" column="0">
       <widget class="QLabel" name="high0">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 15pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>15°</string>
@@ -859,8 +877,9 @@ background-color:rbg(255,255,255);</string>
       <widget class="QLabel" name="quality4_label">
        <property name="styleSheet">
         <string notr="true">font: 11pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>严重污染</string>
@@ -873,9 +892,10 @@ background-color:rbg(255,255,255);</string>
      <item row="3" column="0">
       <widget class="QLabel" name="type0_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 14pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>晴</string>
@@ -888,9 +908,10 @@ background-color:rbg(255,255,255);</string>
      <item row="3" column="1">
       <widget class="QLabel" name="type1_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 14pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>晴</string>
@@ -903,9 +924,10 @@ background-color:rbg(255,255,255);</string>
      <item row="3" column="2">
       <widget class="QLabel" name="type2_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 14pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>晴</string>
@@ -918,9 +940,10 @@ background-color:rbg(255,255,255);</string>
      <item row="3" column="3">
       <widget class="QLabel" name="type3_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 14pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>晴</string>
@@ -933,9 +956,10 @@ background-color:rbg(255,255,255);</string>
      <item row="3" column="4">
       <widget class="QLabel" name="type4_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 14pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>多云</string>
@@ -948,9 +972,10 @@ background-color:rbg(255,255,255);</string>
      <item row="3" column="5">
       <widget class="QLabel" name="type5_label">
        <property name="styleSheet">
-        <string notr="true">font: 13pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+        <string notr="true">font: 14pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>小雨</string>
@@ -1073,8 +1098,9 @@ background-color:argb(60,60,60,0);</string>
       <widget class="QLabel" name="tips">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;京華老宋体&quot;;
-color:rgb(0, 0, 0);
-background-color:rbg(255,255,255);</string>
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;感&lt;br/&gt;冒&lt;br/&gt;指&lt;br/&gt;数&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1086,6 +1112,12 @@ background-color:rbg(255,255,255);</string>
      </item>
      <item row="0" column="1" colspan="2">
       <widget class="QLabel" name="browser">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;京華老宋体&quot;;
+background-color:rgba(170,170,170,60);
+color: rgb(0, 0, 0);
+</string>
+       </property>
        <property name="text">
         <string/>
        </property>
