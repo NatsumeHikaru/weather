@@ -55,6 +55,13 @@ Widget::Widget(QWidget *parent)
     connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(slot_reply_finished(QNetworkReply*)));
     get_weather_info(manager);
 
+    ui->sunRiseSet_label->installEventFilter(this);
+    ui->curve_label->installEventFilter(this);
+    ui->cityLineEdit->installEventFilter(this);
+
+    sun_timer = new QTimer(ui->sunRiseSet_label);
+    connect(sun_timer, SIGNAL(timeout()), ui->sunRiseSet_label, SLOT(update()));
+    sun_timer->start(10000);
 }
 
 Widget::~Widget()
@@ -130,7 +137,7 @@ void Widget::parse_json(QByteArray& bytes){
     }
     today = json_obj;
 
-    QString date_str = json_obj.value("data").toString();
+    QString date_str = json_obj.value("date").toString();
     today.date = QDate::fromString(date_str,"yyyyMMdd").toString("yyyy-MM-dd");
     today.city = json_obj.value("cityInfo").toObject().value("city").toString();
 
@@ -184,6 +191,7 @@ void Widget::set_label_content(){
     ui->direction_label->setText(today.wind_direction);
     ui->power_label->setText(today.wind_power);
     ui->browser->setText(today.cold_index);
+    ui->icon->setStyleSheet(tr("image:url(:weatherIcons/day/%1.png);").arg(today.type));
 
     for(int i=0;i<6;++i){
         forecast_week_list[i]->setText(forecast[i].week);
@@ -221,3 +229,184 @@ void Widget::set_label_content(){
 
     ui->curve_label->update();
 }
+
+const QPoint Widget::sun[2] = {
+    QPoint(20,75),
+    QPoint(130,75)
+};
+const QRect Widget::sun_rise_set[2] = {
+    QRect(0, 75, 37, 18),
+    QRect(85, 75, 37, 18)
+};
+const QRect Widget::rect[2] = {
+    QRect(13, 23, 85, 95),
+    QRect(47, 77, 35, 17)
+};
+
+void Widget::paint_sun_rise_set(){
+    QPainter painter(ui->sunRiseSet_label);
+    painter.setRenderHint(QPainter::Antialiasing,true); // 反锯齿
+
+    painter.save();
+    QPen pen = painter.pen();
+    pen.setWidthF(0.5);
+    pen.setColor(Qt::yellow);
+    painter.setPen(pen);
+    painter.drawLine(sun[0],sun[1]);
+    painter.restore();
+
+    painter.save();
+    painter.setFont(QFont("Microsoft Yahei", 5, QFont::Normal));
+    painter.setPen(Qt::black);
+    if(today.sunrise != "" && today.sunset != ""){
+        painter.drawText(sun_rise_set[0],Qt::AlignHCenter,today.sunrise);
+        painter.drawText(sun_rise_set[1],Qt::AlignHCenter,today.sunset);
+    }
+    painter.drawText(rect[1],Qt::AlignHCenter,u8"日出日落");
+    painter.restore();
+
+    //绘制圆弧
+    painter.save();
+    pen.setWidthF(0.5);
+    pen.setStyle(Qt::DotLine);
+    pen.setColor(Qt::green);
+    painter.setPen(pen);
+    painter.drawArc(rect[0],0*16,180*16);
+    painter.restore();
+
+    // 绘制日出日落占比
+    if(today.sunrise != "" && today.sunset != ""){
+        painter.setPen(Qt::NoPen);
+        painter.setBrush(QColor(255,85,0,80));
+
+        int start_angle,span_angle;
+        QString sunset_time = today.date+" "+today.sunset;
+
+        if(QDateTime::currentDateTime() > QDateTime::fromString(sunset_time,"yyyy-MM-dd hh:mm")){
+            start_angle = 0*16;
+            span_angle = 180*16;
+        }
+        else{
+            // 计算起始角度和跨度
+            static QStringList sun_set_time = today.sunset.split(":");
+            static QStringList sun_rise_time = today.sunrise.split(":");
+
+            static QString sun_set_hour = sun_set_time.at(0);
+            static QString sun_set_min = sun_set_time.at(1);
+            static QString sun_rise_hour = sun_rise_time.at(0);
+            static QString sun_rise_min = sun_rise_time.at(1);
+
+            static int sun_rise = sun_rise_hour.toInt() * 60 + sun_rise_min.toInt();
+            static int sun_set = sun_set_hour.toInt() * 60 + sun_set_min.toInt();
+            int now = QTime::currentTime().hour() * 60 + QTime::currentTime().minute();
+
+            start_angle = ((double)(sun_set - now) / (sun_set - sun_rise)) * 180 * 16;
+            span_angle = ((double)(now - sun_rise) / (sun_set - sun_rise)) * 180 * 16;
+        }
+
+        if(start_angle >= 0 && span_angle >= 0){
+            painter.drawPie(rect[0], start_angle, span_angle); // 绘制扇形
+        }
+    }
+
+}
+
+bool Widget::eventFilter(QObject* watched,QEvent* event){
+    if(watched == ui->sunRiseSet_label && event->type() == QEvent::Paint){
+        paint_sun_rise_set();
+    }
+    else if(watched == ui->curve_label && event->type() == QEvent::Paint){
+        paint_curve();
+    }
+    return QWidget::eventFilter(watched, event);
+}
+
+const int span_index = 2;
+const int origin_size = 3;
+const int temperature_starting_coordinate = 45;
+
+void Widget::paint_curve(){
+    QPainter painter(ui->curve_label);
+    painter.setRenderHint(QPainter::Antialiasing,true);
+
+    int temp_total = 0;
+    int high[6] = {}, low[6] = {};
+    QString h, l;
+
+    for(int i=0;i<6;++i){
+        h = forecast[i].high.split(" ").at(1);
+        h = h.left(h.length() - 1);
+        high[i] = (int)(h.toDouble());
+        temp_total += high[i];
+
+        l = forecast[i].low.split(" ").at(1);
+        l = l.left(l.length() - 1);
+        low[i] = (int)(l.toDouble());
+    }
+
+    int temp_avg = (int)(temp_total / 6); // 平均最高温
+
+    // 计算坐标
+    int point_x[6] = {35, 103, 172, 241, 310, 379};
+    int point_hy[6] = {}, point_ly[6] = {};
+    for(int i=0;i<6;++i){
+        point_hy[i] = temperature_starting_coordinate  - ((high[i] - temp_avg) * span_index);
+        point_ly[i] = temperature_starting_coordinate  + ((temp_avg - low[i]) * span_index);
+    }
+
+    QPen pen = painter.pen();
+    pen.setWidth(1);
+
+    // 高温曲线绘制
+    painter.save();
+    pen.setColor(QColor(255, 170, 0));
+    pen.setStyle(Qt::DotLine);
+    painter.setPen(pen);
+    painter.setBrush(QColor(255,170,0));
+    painter.drawEllipse(QPoint(point_x[0], point_hy[0]), origin_size, origin_size);
+    painter.drawEllipse(QPoint(point_x[1], point_hy[1]), origin_size, origin_size);
+    painter.drawLine(point_x[0], point_hy[0], point_x[1], point_hy[1]);
+
+    pen.setStyle(Qt::SolidLine);
+    pen.setWidth(1);
+    painter.setPen(pen);
+
+    for (int i=1;i<5;++i)
+    {
+        painter.drawEllipse(QPoint(point_x[i+1], point_hy[i+1]), origin_size, origin_size);
+        painter.drawLine(point_x[i], point_hy[i], point_x[i+1], point_hy[i+1]);
+    }
+    painter.restore();
+
+    // 低温曲线绘制
+    pen.setColor(QColor(0, 255, 255));
+    pen.setStyle(Qt::DotLine);
+    painter.setPen(pen);
+    painter.setBrush(QColor(0, 255, 255));
+    painter.drawEllipse(QPoint(point_x[0], point_ly[0]), origin_size, origin_size);
+    painter.drawEllipse(QPoint(point_x[1], point_ly[1]), origin_size, origin_size);
+    painter.drawLine(point_x[0], point_ly[0], point_x[1], point_ly[1]);
+
+    pen.setColor(QColor(0, 255, 255));
+    pen.setStyle(Qt::SolidLine);
+    painter.setPen(pen);
+    for (int i=1;i<5;++i)
+    {
+        painter.drawEllipse(QPoint(point_x[i+1], point_ly[i+1]), origin_size, origin_size);
+        painter.drawLine(point_x[i], point_ly[i], point_x[i+1], point_ly[i+1]);
+    }
+
+}
+
+void Widget::on_search_button_clicked(){
+    city_tmp = city;
+    city = ui->cityLineEdit->text();
+    get_weather_info(manager);
+}
+
+
+void Widget::on_refresh_button_clicked(){
+    get_weather_info(manager);
+    ui->curve_label->update();
+}
+

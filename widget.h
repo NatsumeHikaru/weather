@@ -23,6 +23,10 @@
 #include <QByteArray>
 #include <QUrl>
 #include <QJsonParseError>
+#include <QPainter>
+#include <QPoint>
+#include <QRect>
+#include <QTimer>
 
 #include "hook.h"
 #include "weatherTool.h"
@@ -41,6 +45,7 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+    virtual bool eventFilter(QObject* watched, QEvent* event);
 
 
 protected:
@@ -50,6 +55,8 @@ protected:
     void get_weather_info(QNetworkAccessManager* manager);
     void parse_json(QByteArray& bytes);
     void set_label_content();
+    void paint_sun_rise_set();
+    void paint_curve();
 
 private:
     Ui::Widget *ui;
@@ -70,9 +77,16 @@ private:
     Today today;
     Forecast forecast[7];
 
+    static const QPoint sun[2]; // 日出日落底线
+    static const QRect sun_rise_set[2]; // 日出日落时间
+    static const QRect rect[2]; // 日出日落圆弧
+    QTimer* sun_timer;
+
 private slots:
     void slot_exit_app();
     void slot_check_hook_type(Hook::Type);
     void slot_reply_finished(QNetworkReply* reply);
+    void on_search_button_clicked();
+    void on_refresh_button_clicked();
 };
 #endif // WIDGET_H
