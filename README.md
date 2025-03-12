@@ -1,2 +1,2 @@
 # weather
-Weather report by qr5
+Weather report by qt5
